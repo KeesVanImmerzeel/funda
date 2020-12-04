@@ -1,0 +1,22 @@
+Package: funda
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Kees",
+           family = "van Immerzeel",
+           role = c("aut", "cre"),
+           email = "c.h.van.immerzeel@gmail.com",
+           comment = c(ORCID = "https://orcid.org/0000-0003-0926-3248"))
+Maintainer: Kees van Immerzeel <c.h.van.immerzeel@gmail.com>
+Description: Functions to explore the website 'funda.nl'.
+License: Artistic-2.0
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
+Imports: 
+    rvest,
+    magrittr,
+    xml2,
+    dplyr,
+    stringr
