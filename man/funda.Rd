@@ -9,6 +9,8 @@ This package exports the following functions:
 }
 \details{
 \itemize{
-\item \code{\link{create_house_htmls}}
+\item \code{\link{fd_create_house_htmls}}
+\item \code{\link{fd_extract_addresses}}
+\item \code{\link{fd_is_new_construction}}
 }
 }
