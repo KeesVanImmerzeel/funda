@@ -3,8 +3,9 @@
 #' This package exports the following functions:
 #'
 #' * \code{\link{fd_create_house_htmls}}
-#' * \code{\link{fd_extract_addresses}}
+#' * \code{\link{fd_addresses}}
 #' * \code{\link{fd_is_new_construction}}
+#' * \code{\link{fd_plot_area}}
 #'
 #' @docType package
 #' @name funda

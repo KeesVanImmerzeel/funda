@@ -142,7 +142,7 @@ fd_create_house_htmls <- function(gemeente) {
 
 #' TRUE if new construction
 #'
-#' @inheritParams fd_extract_addresses
+#' @inheritParams fd_addresses
 #' @return TRUE if new construction (boolean vector)
 #' examples
 #' house_htmls <- fd_create_house_htmls("Doesburg" )
@@ -170,14 +170,44 @@ fd_is_new_construction <- function(house_htmls) {
 #'Extract addresses of houses in list of html documents.
 #'
 #' @param house_htmls list of html documents as read with function create_house_htmls().
-#'
 #' @return addresses of houses (character vector)
 #' examples
 #' house_htmls <- fd_create_house_htmls("Doesburg" )
-#' x <- fd_extract_addresses(house_htmls)
+#' x <- fd_addresses(house_htmls)
 #' @export
-fd_extract_addresses <- function(house_htmls) {
+fd_addresses <- function(house_htmls) {
    f <- Vectorize(.extract_address,"html_doc")
    f(house_htmls)
+}
+
+#' Plot area of house.
+#'
+#' @inheritParams .extract_core_urls_from_html
+#' @return Plot area (numeric)
+.plot_area <- function(html_doc) {
+   x <-
+      html_doc %>% html_node(".fd-align-items-center+ .fd-align-items-center .fd-text--nowrap")  %>%
+      html_text() %>%
+      gsub("\\.", "", .) %>%
+      stringr::str_extract("[[:digit:]]+") %>%
+      as.numeric()
+#   if (is.na(x) & x < 10) {
+#      x <- 0
+#   }
+}
+
+#' Plot area of houses.
+#'
+#' @inheritParams fd_addresses
+#' @return Plot area of houses (numeric vector)
+#' examples
+#' house_htmls <- fd_create_house_htmls("Doesburg" )
+#' x <- fd_plot_area(house_htmls)
+#'@export
+fd_plot_area <- function(house_htmls) {
+   f <- Vectorize(.plot_area,"html_doc")
+   x <- f(house_htmls)
+   x[is.na(x)|x<10] <- 0
+   return(x)
 }
 
