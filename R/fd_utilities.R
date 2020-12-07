@@ -130,41 +130,23 @@ fd_create_house_htmls <- function(gemeente) {
    return(apply(urls %>% as.array(), 1, xml2::read_html))
 }
 
-#' TRUE if new construction
-#'
-#' @inheritParams .extract_core_urls_from_html
-#' @return TRUE if new construction (boolean)
-.is_new_construction <- function(html_doc) {
-   x <- html_doc %>% rvest::html_node(".object-kenmerken-list:nth-child(5) .fd-align-items-center:nth-child(4)")  %>%
-      rvest::html_text() %>% grep("nieuwbouw",.,ignore.case=TRUE) %>% length() > 0
-   return(x)
-}
-
-#' TRUE if new construction
+#' Type of construction.
 #'
 #' @inheritParams fd_addresses
-#' @return TRUE if new construction (boolean vector)
+#' @return Type of construction (character vector)
 #' examples
 #' house_htmls <- fd_create_house_htmls("Doesburg" )
-#' x <- fd_is_new_construction(house_htmls)
-fd_is_new_construction <- function(house_htmls) {
-   f <- Vectorize(.is_new_construction,"html_doc")
+#' x <- fd_type(house_htmls)
+fd_type <- function(house_htmls) {
+   # @inheritParams .extract_core_urls_from_html
+   # @return Type of construction (character)
+   .fd_type <- function(html_doc) {
+      x <- html_doc %>% rvest::html_node(".object-kenmerken-list:nth-child(5) .fd-align-items-center:nth-child(4)")  %>%
+         rvest::html_text() %>%  gsub('[\r\n][\r\n]','',.,perl=TRUE)
+      return(x)
+   }
+   f <- Vectorize(.fd_type,"html_doc")
    f(house_htmls)
-}
-
-#' Extract address of house in html document.
-#'
-#' @inheritParams .extract_core_urls_from_html
-#' @return Address of house (character)
-#' house_htmls <- fd_create_house_htmls("Doesburg" )
-#' html_doc <- house_htmls[[1]]
-#' .extract_address(html_doc)
-.extract_address <- function(html_doc) {
-   street <- html_doc %>% rvest::html_node(".object-header__title")  %>%
-      rvest::html_text()
-   town <- html_doc %>% rvest::html_node("li:nth-child(2) .fd-overflow-hidden")  %>%
-      rvest::html_text()
-   paste(street,town)
 }
 
 #'Extract addresses of houses in list of html documents.
@@ -176,24 +158,17 @@ fd_is_new_construction <- function(house_htmls) {
 #' x <- fd_addresses(house_htmls)
 #' @export
 fd_addresses <- function(house_htmls) {
+   #' html_doc <- house_htmls[[1]]
+   #' .extract_address(html_doc)
+   .extract_address <- function(html_doc) {
+      street <- html_doc %>% rvest::html_node(".object-header__title")  %>%
+         rvest::html_text()
+      town <- html_doc %>% rvest::html_node("li:nth-child(2) .fd-overflow-hidden")  %>%
+         rvest::html_text()
+      paste(street,town)
+   }
    f <- Vectorize(.extract_address,"html_doc")
    f(house_htmls)
-}
-
-#' Plot area of house.
-#'
-#' @inheritParams .extract_core_urls_from_html
-#' @return Plot area (numeric)
-.plot_area <- function(html_doc) {
-   x <-
-      html_doc %>% html_node(".fd-align-items-center+ .fd-align-items-center .fd-text--nowrap")  %>%
-      html_text() %>%
-      gsub("\\.", "", .) %>%
-      stringr::str_extract("[[:digit:]]+") %>%
-      as.numeric()
-#   if (is.na(x) & x < 10) {
-#      x <- 0
-#   }
 }
 
 #' Plot area of houses.
@@ -203,8 +178,20 @@ fd_addresses <- function(house_htmls) {
 #' examples
 #' house_htmls <- fd_create_house_htmls("Doesburg" )
 #' x <- fd_plot_area(house_htmls)
-#'@export
+#' @export
 fd_plot_area <- function(house_htmls) {
+   # Plot area of house.
+   #
+   # @inheritParams .extract_core_urls_from_html
+   # @return Plot area (numeric)
+   .plot_area <- function(html_doc) {
+      x <-
+         html_doc %>% html_node(".fd-align-items-center+ .fd-align-items-center .fd-text--nowrap")  %>%
+         html_text() %>%
+         gsub("\\.", "", .) %>%
+         stringr::str_extract("[[:digit:]]+") %>%
+         as.numeric()
+   }
    f <- Vectorize(.plot_area,"html_doc")
    x <- f(house_htmls)
    x[is.na(x)|x<10] <- 0

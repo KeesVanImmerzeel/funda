@@ -11,7 +11,7 @@ This package exports the following functions:
 \itemize{
 \item \code{\link{fd_create_house_htmls}}
 \item \code{\link{fd_addresses}}
-\item \code{\link{fd_is_new_construction}}
+\item \code{\link{fd_type}}
 \item \code{\link{fd_plot_area}}
 }
 }
