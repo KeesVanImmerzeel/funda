@@ -2,18 +2,19 @@
 % Please edit documentation in R/fd_utilities.R
 \name{fd_create_house_htmls}
 \alias{fd_create_house_htmls}
-\title{Create a list of htmls with information on houses for sale in 'gemeente'.}
+\title{Create a list of htmls with information on houses for sale in 'gemeenten'.}
 \usage{
-fd_create_house_htmls(gemeente)
+fd_create_house_htmls(gemeenten)
 }
 \arguments{
-\item{gemeente}{Name of 'gemeente' (character)}
+\item{gemeenten}{Names of 'gemeente' (character vector)}
 }
 \value{
-list of htmls with information on houses for sale in 'gemeente'.
+list with htmls with information on houses for sale in 'gemeenten'.
+If multiple names are specified, a list of lists is returned (one list per 'gemeente').
 examples
-house_htmls <- fd_create_house_htmls("Doesburg" )
+house_htmls <- fd_create_house_htmls(c("Doesburg","Zevenaar"))
 }
 \description{
-Create a list of htmls with information on houses for sale in 'gemeente'.
+Create a list of htmls with information on houses for sale in 'gemeenten'.
 }
