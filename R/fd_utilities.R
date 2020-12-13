@@ -141,16 +141,6 @@ fd_create_house_htmls <- function(gemeenten) {
    }
 }
 
-#' Unique 'Gemeenten' in a list of htmls with information on houses for sale.
-#'
-#' @inheritParams fd_create_house_htmls
-#' @return Unique 'Gemeenten' in a list of htmls with information on houses for sale (character vector)
-#'   examples
-#'   house_htmls <- fd_create_house_htmls(c("Doesburg","Zevenaar"))
-.nr_of_gemeenten <- function(house_htmls) {
-   length(x)
-}
-
 #' Extract addresses of houses in list of html documents.
 #'
 #' @param house_htmls list of html documents as read with function create_house_htmls().
@@ -172,6 +162,16 @@ fd_addresses <- function(house_htmls) {
    }
    f <- Vectorize(.extract_address, "html_doc", USE.NAMES = FALSE)
    f(house_htmls)
+}
+
+#' Unique 'Gemeenten' in a list of htmls with information on houses for sale.
+#'
+#' @inheritParams fd_addresses
+#' @return Unique 'Gemeenten' in a list of htmls with information on houses for sale (character vector)
+#'   examples
+#'   house_htmls <- fd_create_house_htmls(c("Doesburg","Zevenaar"))
+.nr_of_gemeenten <- function(house_htmls) {
+   length(house_htmls)
 }
 
 #' Type of construction.
