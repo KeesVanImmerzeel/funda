@@ -240,7 +240,7 @@ fd_gemeenten <- function(house_htmls) {
 #' @return Description of houses (character vector)
 #' examples
 #' house_htmls <- fd_create_house_htmls("Doesburg" )
-#' x <- fd_type(house_htmls)
+#' x <- description(house_htmls)
 fd_description <- function(house_htmls) {
    house_htmls %<>% unlist(recursive = FALSE)
    # @inheritParams .extract_core_urls_from_html
@@ -255,5 +255,21 @@ fd_description <- function(house_htmls) {
    f(house_htmls)
 }
 
+#' Check if pattern matches description of houses.
+#'
+#' @inheritParams fd_addresses
+#' @param pattern character string containing a regular expression.
+#' @return TRUE if matched; FALSE otherwise (boolean vector)
+#' house_htmls <- fd_create_house_htmls("Doesburg" )
+#' pattern <- "puntstuk|bron|waterbron|beregeningsbron|put|waterput|welput"
+#' x <- description(house_htmls, pattern)
+fd_descr_match <- function(house_htmls, pattern){
+   x <- fd_description(house_htmls)
+   .f <- function(x, pattern) {
+      x %>% grep(pattern, ., ignore.case = TRUE) %>% length() > 0
+   }
+   f <- Vectorize(.f,"x", USE.NAMES = FALSE)
+   f(x, pattern)
+}
 
 
