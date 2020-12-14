@@ -272,4 +272,3 @@ fd_descr_match <- function(house_htmls, pattern){
    f(x, pattern)
 }
 
-
