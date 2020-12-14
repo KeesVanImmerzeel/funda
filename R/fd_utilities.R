@@ -164,12 +164,13 @@ fd_addresses <- function(house_htmls) {
    f(house_htmls)
 }
 
-#' Unique 'Gemeenten' in a list of htmls with information on houses for sale.
+#' Number of 'Gemeenten' in a list of htmls with information on houses for sale.
 #'
 #' @inheritParams fd_addresses
-#' @return Unique 'Gemeenten' in a list of htmls with information on houses for sale (character vector)
+#' @return Number of 'Gemeenten' in a list of htmls with information on houses for sale (character vector)
 #'   examples
 #'   house_htmls <- fd_create_house_htmls(c("Doesburg","Zevenaar"))
+#'   x <- .nr_of_gemeenten(house_htmls)
 .nr_of_gemeenten <- function(house_htmls) {
    length(house_htmls)
 }
@@ -228,7 +229,31 @@ fd_plot_area <- function(house_htmls) {
 #' @inheritParams fd_addresses
 #' @return 'Gemeenten' (character vector)
 #' house_htmls <- fd_create_house_htmls("Doesburg" )
-#' x <- fd_plot_area(house_htmls)
+#' x <- fd_gemeenten(house_htmls)
 fd_gemeenten <- function(house_htmls) {
    rep(names(house_htmls), lengths(house_htmls))
 }
+
+#' Description of houses.
+#'
+#' @inheritParams fd_addresses
+#' @return Description of houses (character vector)
+#' examples
+#' house_htmls <- fd_create_house_htmls("Doesburg" )
+#' x <- fd_type(house_htmls)
+fd_description <- function(house_htmls) {
+   house_htmls %<>% unlist(recursive = FALSE)
+   # @inheritParams .extract_core_urls_from_html
+   # @return Description of house (character)
+   .fd_description <- function(html_doc) {
+      x <-
+         html_doc %>% rvest::html_node(".object-description-body") %>%
+         rvest::html_text() %>% gsub("\r\n", "", .) %>% gsub("\\s+", " ", .) %>% trimws()
+      return(x)
+   }
+   f <- Vectorize(.fd_description, "html_doc", USE.NAMES = FALSE)
+   f(house_htmls)
+}
+
+
+
