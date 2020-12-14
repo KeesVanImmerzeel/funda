@@ -2,7 +2,7 @@
 % Please edit documentation in R/fd_utilities.R
 \name{.nr_of_gemeenten}
 \alias{.nr_of_gemeenten}
-\title{Unique 'Gemeenten' in a list of htmls with information on houses for sale.}
+\title{Number of 'Gemeenten' in a list of htmls with information on houses for sale.}
 \usage{
 .nr_of_gemeenten(house_htmls)
 }
@@ -10,10 +10,11 @@
 \item{house_htmls}{list of html documents as read with function create_house_htmls().}
 }
 \value{
-Unique 'Gemeenten' in a list of htmls with information on houses for sale (character vector)
+Number of 'Gemeenten' in a list of htmls with information on houses for sale (character vector)
 examples
 house_htmls <- fd_create_house_htmls(c("Doesburg","Zevenaar"))
+x <- .nr_of_gemeenten(house_htmls)
 }
 \description{
-Unique 'Gemeenten' in a list of htmls with information on houses for sale.
+Number of 'Gemeenten' in a list of htmls with information on houses for sale.
 }

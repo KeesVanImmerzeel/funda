@@ -262,7 +262,7 @@ fd_description <- function(house_htmls) {
 #' @return TRUE if matched; FALSE otherwise (boolean vector)
 #' house_htmls <- fd_create_house_htmls("Doesburg" )
 #' pattern <- "puntstuk|bron|waterbron|beregeningsbron|put|waterput|welput"
-#' x <- description(house_htmls, pattern)
+#' x <- fd_descr_match(house_htmls, pattern)
 fd_descr_match <- function(house_htmls, pattern){
    x <- fd_description(house_htmls)
    .f <- function(x, pattern) {
