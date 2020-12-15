@@ -1,4 +1,4 @@
-#' funda: Functions to explore the website 'funda.nl' on houses.
+#' funda: Functions to explore the website 'funda.nl'.
 #'
 #' This package exports the following functions:
 #'
@@ -6,6 +6,9 @@
 #' * \code{\link{fd_addresses}}
 #' * \code{\link{fd_type}}
 #' * \code{\link{fd_plot_area}}
+#' * \code{\link{fd_gemeenten}}
+#' * \code{\link{fd_description}}
+#' * \code{\link{fd_descr_match}}
 #'
 #' @docType package
 #' @name funda

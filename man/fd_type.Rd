@@ -2,7 +2,7 @@
 % Please edit documentation in R/fd_utilities.R
 \name{fd_type}
 \alias{fd_type}
-\title{Type of construction.}
+\title{Extract type of construction from a list of html documents.}
 \usage{
 fd_type(house_htmls)
 }
@@ -16,5 +16,5 @@ house_htmls <- fd_create_house_htmls("Doesburg" )
 x <- fd_type(house_htmls)
 }
 \description{
-Type of construction.
+Extract type of construction from a list of html documents.
 }

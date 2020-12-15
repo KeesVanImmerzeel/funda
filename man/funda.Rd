@@ -3,7 +3,7 @@
 \docType{package}
 \name{funda}
 \alias{funda}
-\title{funda: Functions to explore the website 'funda.nl' on houses.}
+\title{funda: Functions to explore the website 'funda.nl'.}
 \description{
 This package exports the following functions:
 }
@@ -13,5 +13,8 @@ This package exports the following functions:
 \item \code{\link{fd_addresses}}
 \item \code{\link{fd_type}}
 \item \code{\link{fd_plot_area}}
+\item \code{\link{fd_gemeenten}}
+\item \code{\link{fd_description}}
+\item \code{\link{fd_descr_match}}
 }
 }

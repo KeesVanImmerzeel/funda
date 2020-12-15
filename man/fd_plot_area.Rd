@@ -2,7 +2,7 @@
 % Please edit documentation in R/fd_utilities.R
 \name{fd_plot_area}
 \alias{fd_plot_area}
-\title{Plot area of houses.}
+\title{Extract Plot area of houses from a list of html documents.}
 \usage{
 fd_plot_area(house_htmls)
 }
@@ -16,5 +16,5 @@ house_htmls <- fd_create_house_htmls("Doesburg" )
 x <- fd_plot_area(house_htmls)
 }
 \description{
-Plot area of houses.
+Extract Plot area of houses from a list of html documents.
 }

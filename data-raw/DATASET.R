@@ -13,5 +13,6 @@ df <- data.frame(
       puntstuk=fd_descr_match(house_htmls, pattern = "puntstuk|bron|waterbron|beregeningsbron|put|waterput|welput")
 )
 saveRDS(df,"data-raw/df.rds")
+df <- readRDS("data-raw/df.rds")
 
 usethis::use_data(DATASET, overwrite = TRUE)

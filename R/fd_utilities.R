@@ -129,6 +129,7 @@
 fd_create_house_htmls <- function(gemeenten) {
    .create_house_htmls <- function(gemeente) {
       urls <- .create_house_urls(gemeente)
+      print(gemeente)
       return(apply(urls %>% as.array(), 1, xml2::read_html))
    }
    if (length(gemeenten) == 1) {
@@ -141,7 +142,7 @@ fd_create_house_htmls <- function(gemeenten) {
    }
 }
 
-#' Extract addresses of houses in list of html documents.
+#' Extract addresses of houses in a list of html documents.
 #'
 #' @param house_htmls list of html documents as read with function create_house_htmls().
 #' @return addresses of houses (character vector)
@@ -175,7 +176,7 @@ fd_addresses <- function(house_htmls) {
    length(house_htmls)
 }
 
-#' Type of construction.
+#' Extract type of construction from a list of html documents.
 #'
 #' @inheritParams fd_addresses
 #' @return Type of construction (character vector)
@@ -196,7 +197,7 @@ fd_type <- function(house_htmls) {
    f(house_htmls)
 }
 
-#' Plot area of houses.
+#' Extract Plot area of houses from a list of html documents.
 #'
 #' @inheritParams fd_addresses
 #' @return Plot area of houses (numeric vector)
@@ -224,7 +225,7 @@ fd_plot_area <- function(house_htmls) {
    return(x)
 }
 
-#' Extract 'gemeenten' in list of html documents.
+#' Extract 'gemeenten' from a list of html documents.
 #'
 #' @inheritParams fd_addresses
 #' @return 'Gemeenten' (character vector)
@@ -234,7 +235,7 @@ fd_gemeenten <- function(house_htmls) {
    rep(names(house_htmls), lengths(house_htmls))
 }
 
-#' Description of houses.
+#' Extract 'description' of houses from a list of html documents.
 #'
 #' @inheritParams fd_addresses
 #' @return Description of houses (character vector)
@@ -255,7 +256,7 @@ fd_description <- function(house_htmls) {
    f(house_htmls)
 }
 
-#' Check if pattern matches description of houses.
+#' Check if pattern matches description of house in a list of html documents.
 #'
 #' @inheritParams fd_addresses
 #' @param pattern character string containing a regular expression.

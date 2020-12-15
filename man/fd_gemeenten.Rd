@@ -2,7 +2,7 @@
 % Please edit documentation in R/fd_utilities.R
 \name{fd_gemeenten}
 \alias{fd_gemeenten}
-\title{Extract 'gemeenten' in list of html documents.}
+\title{Extract 'gemeenten' from a list of html documents.}
 \usage{
 fd_gemeenten(house_htmls)
 }
@@ -15,5 +15,5 @@ house_htmls <- fd_create_house_htmls("Doesburg" )
 x <- fd_gemeenten(house_htmls)
 }
 \description{
-Extract 'gemeenten' in list of html documents.
+Extract 'gemeenten' from a list of html documents.
 }

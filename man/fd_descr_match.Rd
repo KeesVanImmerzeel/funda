@@ -2,7 +2,7 @@
 % Please edit documentation in R/fd_utilities.R
 \name{fd_descr_match}
 \alias{fd_descr_match}
-\title{Check if pattern matches description of houses.}
+\title{Check if pattern matches description of house in a list of html documents.}
 \usage{
 fd_descr_match(house_htmls, pattern)
 }
@@ -18,5 +18,5 @@ pattern <- "puntstuk|bron|waterbron|beregeningsbron|put|waterput|welput"
 x <- fd_descr_match(house_htmls, pattern)
 }
 \description{
-Check if pattern matches description of houses.
+Check if pattern matches description of house in a list of html documents.
 }

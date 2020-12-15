@@ -2,7 +2,7 @@
 % Please edit documentation in R/fd_utilities.R
 \name{fd_description}
 \alias{fd_description}
-\title{Description of houses.}
+\title{Extract 'description' of houses from a list of html documents.}
 \usage{
 fd_description(house_htmls)
 }
@@ -16,5 +16,5 @@ house_htmls <- fd_create_house_htmls("Doesburg" )
 x <- description(house_htmls)
 }
 \description{
-Description of houses.
+Extract 'description' of houses from a list of html documents.
 }
