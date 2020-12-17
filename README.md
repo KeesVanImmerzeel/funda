@@ -7,6 +7,8 @@ Functions to explore the website 'funda.nl'.
 
 ![The R-code for producing this image is available in the folder: data-raw/example](https://user-images.githubusercontent.com/16401251/102477519-be5f0800-405c-11eb-8642-bee15a3a2c40.PNG)
 
+[Interactive version of the map above.](https://rpubs.com/KeesVanImmerzeel/Puntstukken-15-12-2020)
+
 ## Installation
 
 To install this package:
