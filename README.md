@@ -5,13 +5,15 @@
 
 Functions to explore the website 'funda.nl'.
 
+![The R-code for producing this image is available in the folder: data-raw/example](https://user-images.githubusercontent.com/16401251/102477519-be5f0800-405c-11eb-8642-bee15a3a2c40.PNG)
+
 ## Installation
 
-to install this package:
+To install this package:
 
 `install_github("KeesVanImmerzeel/funda")`
 
-Then load the package:
+To load the package:
 
 `library("funda")` 
 
@@ -49,3 +51,4 @@ df <- data.frame(
       puntstuk=fd_descr_match(house_htmls, pattern = "puntstuk|bron|waterbron|beregeningsbron|put|waterput|welput")
 )
 ```
+check the folder data-raw/example for a more elaborated example.

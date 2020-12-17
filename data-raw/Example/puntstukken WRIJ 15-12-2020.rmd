@@ -1,0 +1,14 @@
+# Puntstukken kleine particuliere onttrekkingen 15-12-2020 op funda.nl
+
+```{r create_map, echo=FALSE, warning=FALSE, message=FALSE}
+library(leaflet)
+library(ggmap)
+library(rgdal)
+
+shapes <- readOGR(".", "df15-12-2020 output puntstukken")
+
+shapes %>% spTransform(CRS("+proj=longlat")) %>% 
+   leaflet() %>%  addTiles()  %>%  addCircleMarkers()
+
+```
+
